@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sharpsites-demo.github.io/shanti-diagnostics-demo/sitemap.xml
