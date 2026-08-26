@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shanti Diagnostics — Ultrasound 3D/4D · ECG · Digital X-Ray · USG Color Doppler · 2D Echo · Pathology | Mayur Vihar Phase III</title>
+<meta name="description" content="Shanti Diagnostics, Mayur Vihar Phase III, Delhi — ultrasound-first diagnostic centre offering 3D/4D scans, USG Color Doppler, 2D Echo, ECG, digital X-ray and pathology under one roof.">
+<link rel="canonical" href="https://sharpsites-demo.github.io/shanti-diagnostics-demo/">
+<style>
+:root{
+  --bg:#0a1120;--bg2:#0e1730;--panel:#111c36;
+  --ink:#e8eefb;--mut:#a9b8d4;--mut2:#8b9cc0;
+  --cyan:#2fd6f0;--teal:#34e0c0;--amber:#ffc857;--line:#1e2c4e;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;font-size:17px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:var(--cyan);text-decoration:none}
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px}
+.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;letter-spacing:.06em}
+/* ---------- header ---------- */
+header{position:relative}
+.bar{position:sticky;top:0;z-index:50;background:rgba(10,17,32,.86);backdrop-filter:blur(9px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:14px}
+.brand{display:flex;align-items:center;gap:11px;min-height:44px}
+.mark{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--cyan),var(--teal));display:grid;place-items:center;flex:none}
+.brand b{font-size:1.02rem;letter-spacing:.02em;line-height:1.15}
+.brand span{display:block;font-size:.72rem;color:var(--mut);letter-spacing:.14em;text-transform:uppercase}
+nav.links{display:flex;gap:6px;align-items:center}
+nav.links a{color:var(--mut);font-size:.92rem;padding:11px 12px;border-radius:8px;min-height:44px;display:inline-flex;align-items:center}
+nav.links a:hover{color:var(--ink);background:var(--panel)}
+@media(max-width:820px){nav.links a:not(.cta){display:none}}
+/* ---------- hero ---------- */
+.hero{position:relative;padding:64px 0 72px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:
+ radial-gradient(900px 420px at 78% -10%,rgba(47,214,240,.14),transparent 60%),
+ radial-gradient(700px 380px at 8% 110%,rgba(52,224,192,.10),transparent 60%);pointer-events:none}
+.grid-lines{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.35;pointer-events:none}
+.hero-inner{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:44px;align-items:center}
+@media(max-width:860px){.hero-inner{grid-template-columns:1fr;gap:34px}}
+.kick{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;color:var(--teal);border:1px solid var(--line);background:var(--panel);padding:7px 13px;border-radius:999px;margin-bottom:20px}
+.kick .dot{width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 0 rgba(52,224,192,.6);animation:pulse 2.2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(52,224,192,0)}100%{box-shadow:0 0 0 0 rgba(52,224,192,0)}}
+h1{font-size:clamp(2.1rem,5.2vw,3.3rem);line-height:1.08;font-weight:800;letter-spacing:-.02em;margin-bottom:18px}
+h1 .accent{background:linear-gradient(90deg,var(--cyan),var(--teal));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mut);font-size:1.12rem;max-width:34ch;margin-bottom:26px}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:52px;padding:0 24px;border-radius:12px;font-weight:700;font-size:1rem;border:none;cursor:pointer}
+.btn-primary{background:linear-gradient(135deg,var(--cyan),var(--teal));color:#04222b}
+.btn-primary:hover{filter:brightness(1.08)}
+.btn-ghost{background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{border-color:var(--cyan)}
+.hero-meta{display:flex;flex-wrap:wrap;gap:22px;margin-top:30px;color:var(--mut);font-size:.9rem}
+.hero-meta b{color:var(--ink)}
+/* sonogram art */
+.scope{position:relative;border:1px solid var(--line);border-radius:18px;background:linear-gradient(160deg,var(--panel),var(--bg2));padding:26px;min-height:360px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
+.scope::after{content:"";position:absolute;inset:0;background:linear-gradient(var(--line) 1px,transparent 1px);background-size:100% 34px;opacity:.25;pointer-events:none}
+.scope-top{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--mut2);letter-spacing:.12em;text-transform:uppercase}
+.wave{width:100%;height:150px;margin:10px 0}
+.wave svg{width:100%;height:100%;display:block}
+.legend{display:grid;grid-template-columns:1fr 1fr;gap:8px;font-size:.78rem;color:var(--mut)}
+.legend div{display:flex;align-items:center;gap:8px}
+.legend i{width:22px;height:22px;border-radius:6px;flex:none}
+/* ---------- section shell ---------- */
+section{padding:70px 0}
+.sec-head{margin-bottom:40px;max-width:640px}
+.eyebrow{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);margin-bottom:12px}
+h2{font-size:clamp(1.6rem,3.6vw,2.3rem);line-height:1.12;font-weight:800;letter-spacing:-.01em}
+.lead{color:var(--mut);margin-top:14px;font-size:1.05rem}
+/* ---------- modality matrix ---------- */
+.matrix{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.matrix{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.matrix{grid-template-columns:1fr}}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;transition:transform .25s,border-color .25s}
+.tile:hover{transform:translateY(-4px);border-color:var(--cyan)}
+.tile .num{position:absolute;top:16px;right:18px;font-size:.7rem;color:var(--mut2);letter-spacing:.1em}
+.tile .ico{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,rgba(47,214,240,.16),rgba(52,224,192,.12));border:1px solid var(--line);display:grid;place-items:center}
+.tile h3{font-size:1.12rem;font-weight:700}
+.tile p{color:var(--mut);font-size:.95rem}
+.prep{margin-top:auto;display:flex;gap:9px;align-items:flex-start;background:var(--bg2);border:1px dashed var(--line);border-radius:10px;padding:10px 12px;font-size:.84rem;color:var(--amber)}
+.prep svg{flex:none;margin-top:1px}
+/* ---------- what to expect ---------- */
+.expect{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:860px){.expect{grid-template-columns:1fr}}
+.step{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
+.step .n{font-size:.72rem;color:var(--teal);letter-spacing:.16em;margin-bottom:10px}
+.step h3{font-size:1.1rem;margin-bottom:8px}
+.step p{color:var(--mut);font-size:.95rem}
+/* ---------- about ---------- */
+.about{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}
+@media(max-width:820px){.about{grid-template-columns:1fr}}
+.about-card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:28px;position:relative}
+.about-card .ring{position:absolute;inset:14px;border:1px dashed var(--line);border-radius:12px;pointer-events:none}
+.about-card .avatar{width:74px;height:74px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--teal));display:grid;place-items:center;margin-bottom:16px;font-weight:800;color:#04222b;font-size:1.5rem}
+.about-card h3{font-size:1.25rem}
+.about-card .role{color:var(--teal);font-size:.9rem;margin:4px 0 14px}
+.about-card p{color:var(--mut);font-size:.97rem}
+.chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.chip{font-size:.8rem;color:var(--mut);border:1px solid var(--line);background:var(--bg2);padding:7px 12px;border-radius:999px}
+/* ---------- reviews ---------- */
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:900px){.reviews{grid-template-columns:1fr}}
+.rev{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+.rev .top{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.rev .ini{width:42px;height:42px;border-radius:50%;background:var(--panel);border:1px solid var(--line);display:grid;place-items:center;font-weight:700;font-size:.95rem;flex:none}
+.rev .who b{display:block;font-size:.95rem}
+.rev .who span{font-size:.78rem;color:var(--mut2)}
+.rev .stars{color:var(--amber);letter-spacing:2px;font-size:.9rem;margin-bottom:8px}
+.rev p{color:var(--mut);font-size:.93rem}
+.ph{color:var(--mut2);font-style:italic;font-size:.9rem;border:1px dashed var(--line);border-radius:10px;padding:14px;background:var(--bg2)}
+/* ---------- location ---------- */
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:820px){.loc-grid{grid-template-columns:1fr}}
+.map-blank{border:2px dashed var(--line);border-radius:16px;min-height:300px;display:grid;place-items:center;text-align:center;padding:30px;color:var(--mut2);background:var(--bg2)}
+.map-blank .pin{width:56px;height:56px;border-radius:50%;background:var(--panel);border:1px solid var(--line);display:grid;place-items:center;margin:0 auto 14px}
+.info-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px}
+.info-card .row{display:flex;gap:13px;padding:12px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+.info-card .row:last-child{border-bottom:none}
+.info-card .row svg{flex:none;margin-top:2px}
+.info-card .row b{display:block;font-size:.86rem;color:var(--mut2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+.info-card .row span{color:var(--ink)}
+.hours{display:grid;grid-template-columns:auto 1fr;gap:4px 18px;font-size:.92rem}
+.hours .d{color:var(--mut)}
+.hours .h{color:var(--ink);text-align:right}
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--line);padding:44px 0 120px;background:var(--bg2)}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+@media(max-width:760px){.foot{grid-template-columns:1fr}}
+.foot h3{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mut2);margin-bottom:12px}
+.foot a{display:block;color:var(--mut);padding:5px 0}
+.foot a:hover{color:var(--cyan)}
+.foot p{color:var(--mut);font-size:.92rem}
+.copy{margin-top:30px;padding-top:20px;border-top:1px solid var(--line);color:var(--mut2);font-size:.82rem}
+/* ---------- whatsapp fab ---------- */
+.wa{position:fixed;right:18px;bottom:18px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:transform .2s}
+.wa:hover{transform:scale(1.08)}
+.wa svg{width:30px;height:30px}
+/* ---------- reveal + reduced motion ---------- */
+[data-reveal]{opacity:0;transform:translateY(22px)}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none!important;transition:none!important}
+  [data-reveal]{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="bar">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Shanti Diagnostics home">
+        <span class="mark"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#04222b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg></span>
+        <span><b>Shanti Diagnostics</b><span>Mayur Vihar · Phase III</span></span>
+      </a>
+      <nav class="links" aria-label="Primary">
+        <a href="#scans">Scans</a>
+        <a href="#expect">Visit</a>
+        <a href="#about">Clinic</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#location">Location</a>
+        <a class="btn btn-primary cta" href="https://wa.me/917290889095" target="_blank" rel="noopener">Book a scan</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="grid-lines" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div>
+        <span class="kick"><span class="dot"></span>Ultrasound-first diagnostics · Mayur Vihar Phase III</span>
+        <h1>Clear scans. <span class="accent">Clear answers.</span><br>Under one roof.</h1>
+        <p class="sub">3D/4D ultrasound, USG Color Doppler, 2D Echo, ECG, digital X-ray and a full pathology lab — with a radiologist who explains your report so it actually makes sense.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://wa.me/917290889095" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Book on WhatsApp
+          </a>
+          <a class="btn btn-ghost" href="#scans">View scans</a>
+        </div>
+        <div class="hero-meta">
+          <span><b>4.5★</b> · 150 reviews</span>
+          <span>Mon–Sat <b>8:30–2:30 &amp; 5–8</b></span>
+          <span>Sun <b>8 AM–8 PM</b></span>
+        </div>
+      </div>
+      <div class="scope" aria-hidden="true">
+        <div class="scope-top"><span>LIVE · USG 3D/4D</span><span>CH-01</span></div>
+        <div class="wave">
+          <svg viewBox="0 0 320 150" preserveAspectRatio="none">
+            <path d="M0,75 L20,75 L30,40 L45,110 L60,30 L80,120 L95,60 L110,75 L130,75 L150,50 L165,100 L180,35 L200,115 L215,70 L230,75 L250,75 L270,55 L285,95 L300,60 L320,75" fill="none" stroke="#2fd6f0" stroke-width="2.5" stroke-linecap="round"/>
+            <path d="M0,110 L30,110 L45,90 L60,130 L80,80 L100,125 L120,95 L140,110 L170,110 L190,95 L210,128 L230,100 L250,110 L280,110 L300,95 L320,110" fill="none" stroke="#34e0c0" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+          </svg>
+        </div>
+        <div class="legend">
+          <div><i style="background:linear-gradient(135deg,#2fd6f0,#34e0c0)"></i>3D/4D Obstetric</div>
+          <div><i style="background:rgba(47,214,240,.35);border:1px solid #2fd6f0"></i>Color Doppler</div>
+          <div><i style="background:rgba(52,224,192,.35);border:1px solid #34e0c0"></i>2D Echo</div>
+          <div><i style="background:rgba(255,199,87,.35);border:1px solid #ffc857"></i>Digital X-Ray</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</header>
+
+<main>
+  <!-- MODALITY MATRIX -->
+  <section id="scans">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div class="eyebrow">Modality matrix</div>
+        <h2>Six scans, one centre, one report you can trust</h2>
+        <p class="lead">Every modality has its own prep so you walk in ready. ___ Add your full scan list and prep notes for each ___</p>
+      </div>
+      <div class="matrix">
+        <article class="tile" data-reveal>
+          <span class="num">01</span>
+          <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2fd6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l2-6 4 12 2-6h6"/></svg></span>
+          <h3>Ultrasound 3D / 4D</h3>
+          <p>Real-time obstetric &amp; general scans with clear, shareable imaging — the scan most of our pregnancy patients come for.</p>
+          <div class="prep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Prep: full bladder for pelvic scans · ___ Add details ___</span></div>
+        </article>
+        <article class="tile" data-reveal>
+          <span class="num">02</span>
+          <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#34e0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 9 9"/><path d="M12 12l4-4"/></svg></span>
+          <h3>USG Color Doppler</h3>
+          <p>Blood-flow and vascular studies to check circulation in real time across key vessels and organs.</p>
+          <div class="prep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Prep: ___ Add prep note ___</span></div>
+        </article>
+        <article class="tile" data-reveal>
+          <span class="num">03</span>
+          <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ffc857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h3l2-5 3 10 3-8 2 3h5"/></svg></span>
+          <h3>2D Echocardiography</h3>
+          <p>Heart-structure and function imaging — one of the trusted Echo labs in Mayur Vihar, Delhi.</p>
+          <div class="prep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Prep: ___ Add prep note ___</span></div>
+        </article>
+        <article class="tile" data-reveal>
+          <span class="num">04</span>
+          <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#34e0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12h20M4 12a8 8 0 0 1 16 0M4 12a8 8 0 0 0 16 0"/></svg></span>
+          <h3>Digital X-Ray</h3>
+          <p>Digital radiography for clear, precise results with fast turnaround on reports.</p>
+          <div class="prep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Prep: remove metal &amp; jewellery · ___ Add details ___</span></div>
+        </article>
+        <article class="tile" data-reveal>
+          <span class="num">05</span>
+          <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2fd6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 17V7M7 17V11M11 17V5M15 17v-8M19 17V9"/></svg></span>
+          <h3>ECG</h3>
+          <p>Resting electrocardiogram to record your heart's electrical activity quickly and comfortably.</p>
+          <div class="prep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Prep: ___ Add prep note ___</span></div>
+        </article>
+        <article class="tile" data-reveal>
+          <span class="num">06</span>
+          <span class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ffc857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <h3>Pathology Lab</h3>
+          <p>Comprehensive blood tests and procedures including FNAC and HSG, all under the same roof.</p>
+          <div class="prep"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 9v4M12 17h.01M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg><span>Prep: fasting for blood work · ___ Add details ___</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT TO EXPECT -->
+  <section id="expect" style="background:var(--bg2)">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div class="eyebrow">What to expect</div>
+        <h2>A visit that respects your time</h2>
+        <p class="lead">From walk-in to report, here is how a scan at Shanti Diagnostics usually goes. ___ Add your real process steps ___</p>
+      </div>
+      <div class="expect">
+        <div class="step" data-reveal>
+          <div class="n">STEP 01</div>
+          <h3>Book or walk in</h3>
+          <p>Message us on WhatsApp with your doctor's referral, or walk in during opening hours. ___ Add booking details ___</p>
+        </div>
+        <div class="step" data-reveal>
+          <div class="n">STEP 02</div>
+          <h3>Scan &amp; consult</h3>
+          <p>The radiologist performs your scan and walks you through the findings so the report is not a mystery. ___ Add details ___</p>
+        </div>
+        <div class="step" data-reveal>
+          <div class="n">STEP 03</div>
+          <h3>Report in hand</h3>
+          <p>Take your report to your referring doctor — or ask us how to share it digitally. ___ Add report delivery details ___</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap about">
+      <div class="about-card" data-reveal>
+        <div class="ring" aria-hidden="true"></div>
+        <div class="avatar">DM</div>
+        <h3>Dr. Manish &amp; team</h3>
+        <div class="role">Radiologist · Shanti Diagnostics</div>
+        <p>Patients across Mayur Vihar repeatedly name Dr. Manish for pregnancy scans — and for explaining the report properly, not just handing it over. ___ Add Dr. Manish's full qualifications and experience ___</p>
+        <div class="chips">
+          <span class="chip">Ultrasound 3D/4D</span>
+          <span class="chip">Color Doppler</span>
+          <span class="chip">2D Echo</span>
+          <span class="chip">ECG</span>
+          <span class="chip">Digital X-Ray</span>
+          <span class="chip">Pathology</span>
+        </div>
+      </div>
+      <div data-reveal>
+        <div class="eyebrow">The clinic</div>
+        <h2>Accurate, advanced and dependable diagnostics</h2>
+        <p class="lead">Shanti Diagnostics is built around one idea: the right scan, done right, explained clearly. Our cutting-edge facilities bring ultrasound, imaging and pathology together so you rarely need to go anywhere else.</p>
+        <p class="lead">___ Add your real clinic story, equipment details and team background here ___</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" style="background:var(--bg2)">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div class="eyebrow">Patient voices</div>
+        <h2>What patients say</h2>
+        <p class="lead">4.5★ across 150 Google reviews. ___ Replace these with your real, verified Google reviews ___</p>
+      </div>
+      <div class="reviews">
+        <article class="rev" data-reveal>
+          <div class="top"><span class="ini">AN</span><div class="who"><b>Anjali</b><span>Google review</span></div></div>
+          <div class="stars">★★★★★</div>
+          <p>"Done all the scans here. Dr Manish is so professional — highly recommended for pregnant women."</p>
+        </article>
+        <article class="rev" data-reveal>
+          <div class="top"><span class="ini">PK</span><div class="who"><b>Pankaj</b><span>Google review</span></div></div>
+          <div class="stars">★★★★★</div>
+          <p>"Visited for a pregnancy ultrasound. Dr Manish explained the report properly and clearly."</p>
+        </article>
+        <article class="rev" data-reveal>
+          <div class="top"><span class="ini">KG</span><div class="who"><b>Kritika</b><span>Google review</span></div></div>
+          <div class="stars">★★★★★</div>
+          <p>"Very good experience. The doctor is highly skilled, experienced and patient — explained everything clearly."</p>
+        </article>
+      </div>
+      <div class="ph" data-reveal style="margin-top:18px">[Add more real Google reviews here — including the full text and reviewer names]</div>
+    </div>
+  </section>
+
+  <!-- LOCATION -->
+  <section id="location">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div class="eyebrow">Find us</div>
+        <h2>Mayur Vihar Phase III, Delhi</h2>
+      </div>
+      <div class="loc-grid">
+        <div class="map-blank" data-reveal>
+          <div>
+            <div class="pin"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2fd6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <p><strong>[Add a Google Maps embed]</strong></p>
+            <p style="margin-top:6px">Drop the live map here so patients can get directions in one tap.</p>
+          </div>
+        </div>
+        <div class="info-card" data-reveal>
+          <div class="row">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2fd6f0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><b>Address</b><span>A-1154/55, GD Colony, Block A, Mayur Vihar Phase III, Gharoli, Delhi 110096</span></div>
+          </div>
+          <div class="row">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#34e0c0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.6 2z"/></svg>
+            <div><b>Phone</b><span><a href="tel:+917290889095">+91 72908 89095</a></span></div>
+          </div>
+          <div class="row">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffc857" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <div><b>Hours</b>
+              <div class="hours">
+                <span class="d">Mon–Sat</span><span class="h">8:30 AM – 2:30 PM · 5 – 8 PM</span>
+                <span class="d">Sunday</span><span class="h">8 AM – 8 PM</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <h3>Shanti Diagnostics</h3>
+        <p>Ultrasound-first diagnostics centre in Mayur Vihar Phase III — 3D/4D scans, Color Doppler, 2D Echo, ECG, digital X-ray and pathology under one roof.</p>
+      </div>
+      <div>
+        <h3>Scans</h3>
+        <a href="#scans">Ultrasound 3D/4D</a>
+        <a href="#scans">USG Color Doppler</a>
+        <a href="#scans">2D Echo &amp; ECG</a>
+        <a href="#scans">Digital X-Ray</a>
+        <a href="#scans">Pathology</a>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <a href="tel:+917290889095">+91 72908 89095</a>
+        <a href="https://wa.me/917290889095" target="_blank" rel="noopener">WhatsApp us</a>
+        <a href="#location">Get directions</a>
+      </div>
+    </div>
+    <div class="copy">© 2026 Shanti Diagnostics · Demo site by SharpSites · ___ Add your real footer content and legal links here ___</div>
+  </div>
+</footer>
+
+<a class="wa" href="https://wa.me/917290889095" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.9 1.22 3.1.15.2 2.1 3.2 5.1 4.49.71.3 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2-1.42.25-.7.25-1.3.18-1.42-.07-.13-.27-.2-.57-.35zM12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.9 7c0 5.45-4.44 9.88-9.9 9.88zm8.42-18.3A11.8 11.8 0 0 0 12.05 0C5.5 0 .16 5.33.16 11.89c0 2.1.55 4.14 1.59 5.94L.06 24l6.33-1.66a11.9 11.9 0 0 0 5.66 1.44h.01c6.55 0 11.89-5.33 11.89-11.89 0-3.18-1.24-6.16-3.48-8.4z"/></svg>
+</a>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.from('.hero-inner > div:first-child > *',{opacity:0,y:26,stagger:.12,duration:.7,ease:'power3.out'});
+  gsap.from('.scope',{opacity:0,scale:.94,duration:.8,ease:'back.out(1.4)'});
+  gsap.from('.wave svg path',{strokeDasharray:600,strokeDashoffset:600,duration:1.6,ease:'power2.inOut',delay:.4});
+  gsap.utils.toArray('[data-reveal]').forEach(el=>{
+    gsap.to(el,{opacity:1,y:0,duration:.7,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 88%'}});
+  });
+  gsap.from('.tile',{opacity:0,y:30,stagger:.08,duration:.6,ease:'power3.out',
+    scrollTrigger:{trigger:'.matrix',start:'top 85%'}});
+  gsap.utils.toArray('.hero-meta b').forEach(el=>{
+    const txt=el.textContent;
+    const num=parseFloat(txt.replace(/[^0-9.]/g,''));
+    if(isNaN(num)) return;
+    const obj={v:0};
+    gsap.to(obj,{v:num,duration:1.4,ease:'power1.out',
+      scrollTrigger:{trigger:'.hero',start:'top 80%'},
+      onUpdate:()=>{el.textContent=txt.replace(num,obj.v.toFixed(1));}});
+  });
+});
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"MedicalClinic",
+  "name":"Shanti Diagnostics",
+  "description":"Ultrasound-first diagnostic centre in Mayur Vihar Phase III, Delhi offering 3D/4D ultrasound, USG Color Doppler, 2D Echocardiography, ECG, digital X-ray and pathology services.",
+  "telephone":"+917290889095",
+  "address":{"@type":"PostalAddress","streetAddress":"A-1154/55, GD Colony, Block A, Mayur Vihar Phase III, Gharoli","addressLocality":"Delhi","postalCode":"110096","addressCountry":"IN"},
+  "geo":{"@type":"GeoCoordinates","latitude":28.6108688,"longitude":77.3350201},
+  "openingHoursSpecification":[
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"08:30","closes":"14:30"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"17:00","closes":"20:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"08:00","closes":"20:00"}
+  ],
+  "aggregateRating":{"@type":"AggregateRating","ratingValue":"4.5","reviewCount":"150"},
+  "availableService":["Ultrasound 3D/4D","USG Color Doppler","2D Echocardiography","ECG","Digital X-Ray","Pathology Lab"],
+  "url":"https://sharpsites-demo.github.io/shanti-diagnostics-demo/"
+}
+</script>
+</body>
+</html>
