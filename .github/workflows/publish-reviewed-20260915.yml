@@ -1,0 +1,12 @@
+name: Publish reviewed Shanti Diagnostics redesign
+on:
+  push:
+    branches: [gh-pages]
+    paths: [.github/workflows/publish-reviewed-20260915.yml]
+permissions:
+  contents: write
+jobs:
+  publish:
+    uses: SharpSites-demo/sparta-gym-spa-ritik-demo/.github/workflows/publish-reviewed-html.yml@41cd0e039ca25ad2234ffc0978649d9e00875f09
+    with:
+      expected_sha256: 7eb36f6c8a5a0a2ba36d37458aafeb6898915df78956aa50c53a620b3082ab6c
